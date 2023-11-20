@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+</head>
+<body>
+    <h2>Entre em Contato</h2>
+    <form id="contato-form" action="salvar_contato.php" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" required></textarea>
+        
+        <button type="submit" id="enviar">Enviar</button>
+    </form>
+
+    <div id="mensagem-confirmacao" style="display: none;">
+        <p>Obrigado por entrar em contato. Sua solicitação foi enviada com sucesso. Você receberá uma resposta em até 48 horas.</p>
+    </div>
+
+    <script>
+        document.getElementById("contato-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+            
+            // Oculta o formulário e exibe a mensagem de confirmação
+            document.getElementById("contato-form").style.display = "none";
+            document.getElementById("mensagem-confirmacao").style.display = "block";
+
+            // Redireciona o usuário para a página de contato após três segundos
+            setTimeout(function() {
+                window.location.href = "contato.html";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
